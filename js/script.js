@@ -63,7 +63,7 @@ function genCSV(){
         "\"," + locations[i].geometry.location.B +
         "," + locations[i].geometry.location.k;
     }
-    document.getElementById('CSVOutput').value = output;
+    window.open('data:text/csv;charset=utf-8,' + escape(output))
   }
 }
 
