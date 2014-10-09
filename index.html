@@ -4,17 +4,26 @@
       Pointz for mapz
     </title>
 
+    <script src="js/jquery-1.11.1.min.js"></script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
     <script src="js/script.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css"/>
   </head>
   <body>
+    <img src="images/powered-by-google-on-white.png" style="float:right"></img>
     <h1> Pointz </h1>
     <p>
       A web app created by Ethan Jurman and Ricky Kendrick
     </p>
 
+    <span>Latitude</span><input id="lat" type="number" value="-33.8665433">
+    <span>Longitude</span><input id="lng" type="number" value="151.1956316">
+    <span>Query</span><input id="query" type="text" value="store">
+    <span>Radius</span><input id="radius" type="number" value="500">
+    <button id="search" onclick="newMapSearch()"> Search </button>
+
     <div id="map"></div>
+
 
   </body>
 </html>
