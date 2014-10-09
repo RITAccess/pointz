@@ -12,9 +12,9 @@
 
 var map;
 var service;
-var infowindow;
 var circleMap = new google.maps.Circle(null);
 var markers = [];
+var locations;
 
 function initialize() {
   var pyrmont = new google.maps.LatLng(-33.8665433,151.1956316);
@@ -51,6 +51,19 @@ function callback(results, status) {
       });
       markers.push(marker);
     }
+    locations = results;
+  }
+}
+
+function genCSV(){
+  if(locations.length > 0){
+    var output = "\"name\",\"longitude\",\"latitude\"";
+    for(var i = 0; i < locations.length; i++){
+      output += "\n\"" + locations[i].name +
+        "\"," + locations[i].geometry.location.B +
+        "," + locations[i].geometry.location.k;
+    }
+    document.getElementById('CSVOutput').value = output;
   }
 }
 
