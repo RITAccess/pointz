@@ -73,13 +73,15 @@ function callback(results, status) {
 
 function genCSV(){
   if(locations.length > 0){
-    var output = "\"name\",\"longitude\",\"latitude\"";
+    var output = "<title>Locations</title>";
+    output += "<p>\"name\",\"longitude\",\"latitude\"";
     for(var i = 0; i < locations.length; i++){
-      output += "\n\"" + locations[i].name +
+      output += "</br>\"" + locations[i].name +
         "\"," + locations[i].geometry.location.B +
         "," + locations[i].geometry.location.k;
     }
-    window.open('data:text/csv;charset=utf-8,' + escape(output))
+    output += "</p>";
+    window.open('data:text/html;charset=utf-8,' + output)
   }
 }
 
