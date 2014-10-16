@@ -5,6 +5,7 @@
     </title>
 
     <script src="js/jquery-1.11.1.min.js"></script>
+    <script type="text/javasctipt" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA0PQDsi__fnPfEet90O2JyEaCyZ8-KYt8"></script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
     <script src="js/script.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css"/>
@@ -17,10 +18,8 @@
       (note: this is a work in progress)
     </p>
 
-    <span>Latitude</span><input id="lat" type="number" value="-33.8665433">
-    <span>Longitude</span><input id="lng" type="number" value="151.1956316">
-    <span>Query</span><input id="query" type="text" value="store">
-    <span>Radius</span><input id="radius" type="number" value="500">
+    <span>Search for </span><input id="type" type="text" value="Pizza">
+    <span>in </span><input id="location" type="text" value="New York">
     <button id="search" onclick="newMapSearch()"> Search </button>
     <button type="button" onclick="genCSV()" style="float:right">Download CSV</button>
 

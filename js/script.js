@@ -17,41 +17,57 @@ var markers = [];
 var locations;
 
 function initialize() {
-  var pyrmont = new google.maps.LatLng(-33.8665433,151.1956316);
-
+  //Map start location
+  var newyork = new google.maps.LatLng(40.7127,74.0059);
+  //initialize and center map
   map = new google.maps.Map(document.getElementById('map'), {
-      center: pyrmont,
+      center: newyork,
       zoom: 15
     });
-
+  //Search request
   var request = {
-    location: pyrmont,
-    radius: '500',
-    query: 'store'
+    query: 'Pizza in new york'
   };
-
+  //Preform search
   service = new google.maps.places.PlacesService(map);
   service.textSearch(request, callback);
+
+  /*
   drawCircle();
 
   $('#lat, #lng, #radius').on('input', function(){
     drawCircle();
   });
+  */
 }
 
 function callback(results, status) {
   if (status == google.maps.places.PlacesServiceStatus.OK) {
+    var LatLonList = [results.length];
     for (var i = 0; i < results.length; i++) {
       var place = results[i];
-      console.log(results[i]);
+      //console.log(results[i]);
+
       marker = new google.maps.Marker({
         position: results[i].geometry.location,
         map: map,
         title: results[i].name
       });
+
       markers.push(marker);
+
+      LatLonList[i] = new google.maps.LatLng(results[i].geometry.location.k,results[i].geometry.location.B);
     }
     locations = results;
+
+    //Move the map so that all markers are in view
+    var bounds = new google.maps.LatLngBounds();
+
+    for(var i =0, LtLgLen = LatLonList.length; i < LtLgLen; i++){
+      bounds.extend(LatLonList[i]);
+    }
+
+    map.fitBounds(bounds);
   }
 }
 
@@ -67,24 +83,21 @@ function genCSV(){
   }
 }
 
-function mapSearch(location, query, radius) {
+function mapSearch(type, location) {
   markers.forEach(function(e){
     e.setMap(null);
   });
   service = new google.maps.places.PlacesService(map);
   var request = {
-    location: location,
-    radius: radius,
-    query: query
+    query: type + " in " + location
   }
   service.textSearch(request, callback);
 }
 
 function newMapSearch(){
   mapSearch(
-    new google.maps.LatLng(document.getElementById('lat').value, document.getElementById('lng').value),
-    document.getElementById('query').value,
-    document.getElementById('radius').value
+    document.getElementById('type').value,
+    document.getElementById('location').value
   )
 }
 
