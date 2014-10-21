@@ -9,14 +9,11 @@
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
     <script src="js/script.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
   </head>
   <body>
     <img src="images/powered-by-google-on-white.png" style="float:right"></img>
     <h1> Pointz </h1>
-    <p>
-      A web app created by Ethan Jurman and Ricky Kendrick
-      (note: this is a work in progress)
-    </p>
     <span>Search for </span>
     <input id="type" type="text" value="Pizza" onKeyPress="isEnter(event, newMapSearch)"></input>
     <span>in </span>
@@ -24,5 +21,8 @@
     <button id="search" type="submit" onclick="newMapSearch()"> Search </button>
     <button type="button" onclick="genCSV()" style="float:right">Generate CSV</button>
     <div id="map"></div>
+    <div class="footer">
+      A web app created by Ethan Jurman and Ricky Kendrick
+    </div>
   </body>
 </html>
