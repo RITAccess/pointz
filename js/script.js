@@ -51,7 +51,8 @@ function callback(results, status) {
       marker = new google.maps.Marker({
         position: results[i].geometry.location,
         map: map,
-        title: results[i].name
+        title: results[i].name,
+        animation: google.maps.Animation.DROP
       });
 
       markers.push(marker);
@@ -74,11 +75,17 @@ function callback(results, status) {
 function genCSV(){
   if(locations.length > 0){
     var output = "<title>Locations</title>";
-    output += "<p>\"name\",\"longitude\",\"latitude\"";
+    output += "<p>\"name\",\"longitude\",\"latitude\",\"price_level\",\"rating\"";
     for(var i = 0; i < locations.length; i++){
+      var price = locations[i].price_level;
+      var rating = locations[i].rating;
+      if(typeof price === 'undefined'){price = "N/A";}
+      if(typeof rating === 'undefined'){rating = "N/A";}
       output += "</br>\"" + locations[i].name +
-        "\"," + locations[i].geometry.location.B +
-        "," + locations[i].geometry.location.k;
+        "\"," + locations[i].geometry.location.B +  //B = longitude
+        "," + locations[i].geometry.location.k +    //k = latitude
+        "," + price +
+        "," + rating;
     }
     output += "</p>";
     window.open('data:text/html;charset=utf-8,' + output)
