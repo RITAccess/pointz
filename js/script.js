@@ -74,21 +74,19 @@ function callback(results, status) {
 
 function genCSV(){
   if(locations.length > 0){
-    var output = "<title>Locations</title>";
-    output += "<p>\"name\",\"longitude\",\"latitude\",\"price_level\",\"rating\"";
+    var output = "\"name\",\"longitude\",\"latitude\",\"price_level\",\"rating\"";
     for(var i = 0; i < locations.length; i++){
       var price = locations[i].price_level;
       var rating = locations[i].rating;
       if(typeof price === 'undefined'){price = "N/A";}
       if(typeof rating === 'undefined'){rating = "N/A";}
-      output += "</br>\"" + locations[i].name +
+      output += "\n\"" + locations[i].name +
         "\"," + locations[i].geometry.location.B +  //B = longitude
         "," + locations[i].geometry.location.k +    //k = latitude
         "," + price +
         "," + rating;
     }
-    output += "</p>";
-    window.open('data:text/html;charset=utf-8,' + output)
+    window.open('data:text/csv;charset=utf-8,' + escape(output))
   }
 }
 

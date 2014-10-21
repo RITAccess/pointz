@@ -1,9 +1,9 @@
 <html>
   <head>
+    <meta charset="UTF-8">
     <title>
       Pointz for mapz
     </title>
-
     <script src="js/jquery-1.11.1.min.js"></script>
     <script type="text/javasctipt" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA0PQDsi__fnPfEet90O2JyEaCyZ8-KYt8"></script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
@@ -19,7 +19,7 @@
     <span>in </span>
     <input id="location" type="text" value="New York" onKeyPress="isEnter(event, newMapSearch)"></input>
     <button id="search" type="submit" onclick="newMapSearch()"> Search </button>
-    <button type="button" onclick="genCSV()" style="float:right">Generate CSV</button>
+    <button type="button" onclick="genCSV()" style="float:right">Download CSV</button>
     <div id="map"></div>
     <div class="footer">
       A web app created by <br>
