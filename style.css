@@ -3,7 +3,7 @@
   input { width: 100%; }
   #map {
     width: 100%;
-    height: calc(100% - 248px);
+    height: calc(100% - 255px);
     margin: 20px 0px;
   }
 }
