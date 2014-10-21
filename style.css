@@ -3,14 +3,14 @@
   input { width: 100%; }
   #map {
     width: 100%;
-    height: calc(100% - 208px);
+    height: calc(100% - 248px);
     margin: 20px 0px;
   }
 }
 @media (min-width:530px){
   #map {
     width: 100%;
-    height: calc(100% - 140px);
+    height: calc(100% - 174px);
     margin: 20px 0px;
   }
 }
