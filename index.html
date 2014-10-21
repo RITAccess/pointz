@@ -17,12 +17,12 @@
       A web app created by Ethan Jurman and Ricky Kendrick
       (note: this is a work in progress)
     </p>
-
-    <span>Search for </span><input id="type" type="text" value="Pizza">
-    <span>in </span><input id="location" type="text" value="New York">
-    <button id="search" onclick="newMapSearch()"> Search </button>
+    <span>Search for </span>
+    <input id="type" type="text" value="Pizza" onKeyPress="isEnter(event, newMapSearch)"></input>
+    <span>in </span>
+    <input id="location" type="text" value="New York" onKeyPress="isEnter(event, newMapSearch)"></input>
+    <button id="search" type="submit" onclick="newMapSearch()"> Search </button>
     <button type="button" onclick="genCSV()" style="float:right">Generate CSV</button>
-
     <div id="map"></div>
   </body>
 </html>

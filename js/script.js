@@ -118,4 +118,10 @@ function drawCircle(){
     circleMap = new google.maps.Circle(circle);
 }
 
+function isEnter(keyEvent, func){
+  if(keyEvent && keyEvent.keyCode == 13){
+    func();
+  }
+}
+
 google.maps.event.addDomListener(window, 'load', initialize);
