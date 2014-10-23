@@ -24,6 +24,8 @@ function initialize() {
       center: newyork,
       zoom: 15
     });
+
+  google.maps.event.addListener(map, 'click', clearAllInfo);
   //Search request
   var request = {
     query: 'Pizza in new york'
@@ -31,7 +33,6 @@ function initialize() {
   //Preform search
   service = new google.maps.places.PlacesService(map);
   service.textSearch(request, callback);
-
   /*
   drawCircle();
 
@@ -39,6 +40,12 @@ function initialize() {
     drawCircle();
   });
   */
+}
+
+function clearAllInfo(){
+  markers.forEach(function(marker){
+    marker.info.close(map,marker);
+  });
 }
 
 function callback(results, status) {
@@ -55,8 +62,35 @@ function callback(results, status) {
         animation: google.maps.Animation.DROP
       });
 
-      markers.push(marker);
+      var infoContent = "<strong>" + marker.title +
+        "</strong><br /><hr />Latitude: " +
+        marker.position.k + "<br />Longitude: " +
+        marker.position.B;
 
+      if(typeof results[i].price_level !== 'undefined'){
+        infoContent += "<br />Price Level: " + results[i].price_level;
+      }
+      if(typeof results[i].rating !== 'undefined'){
+        infoContent += "<br />Rating: " + results[i].rating;
+      }
+
+      marker.info = new google.maps.InfoWindow({
+        content: infoContent
+      });
+
+      //add a listener for the markers
+      google.maps.event.addListener(marker, 'click',
+      (function (marker) {
+        return function() {
+          clearAllInfo();
+          map.setCenter(new google.maps.LatLng(marker.position.lat(), marker.position.lng()));
+          map.setZoom(15);
+          marker.info.open(map, marker);
+        }
+      })(marker));
+
+      markers.push(marker);
+      //add point to a list to find the bounds of the map later
       LatLonList[i] = new google.maps.LatLng(results[i].geometry.location.k,results[i].geometry.location.B);
     }
     locations = results;
@@ -70,6 +104,15 @@ function callback(results, status) {
 
     map.fitBounds(bounds);
   }
+}
+
+function onItemClick(event, marker){
+  console.log(marker);
+  var contentString =
+
+  infowindow.setContent(contentString);
+  infowindow.setPosition(marker.position);
+  infowindow.open(map);
 }
 
 function genCSV(){
