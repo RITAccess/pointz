@@ -33,13 +33,6 @@ function initialize() {
   //Preform search
   service = new google.maps.places.PlacesService(map);
   service.textSearch(request, callback);
-  /*
-  drawCircle();
-
-  $('#lat, #lng, #radius').on('input', function(){
-    drawCircle();
-  });
-  */
 }
 
 function clearAllInfo(){
@@ -53,7 +46,6 @@ function callback(results, status) {
     var LatLonList = [results.length];
     for (var i = 0; i < results.length; i++) {
       var place = results[i];
-      //console.log(results[i]);
 
       marker = new google.maps.Marker({
         position: results[i].geometry.location,
@@ -84,7 +76,7 @@ function callback(results, status) {
         return function() {
           clearAllInfo();
           map.setCenter(new google.maps.LatLng(marker.position.lat(), marker.position.lng()));
-          map.setZoom(15);
+          map.setZoom(15); // good zoom level
           marker.info.open(map, marker);
         }
       })(marker));
@@ -98,21 +90,12 @@ function callback(results, status) {
     //Move the map so that all markers are in view
     var bounds = new google.maps.LatLngBounds();
 
-    for(var i =0, LtLgLen = LatLonList.length; i < LtLgLen; i++){
+    for(var i = 0; i < LatLonList.length; i++){
       bounds.extend(LatLonList[i]);
     }
 
     map.fitBounds(bounds);
   }
-}
-
-function onItemClick(event, marker){
-  console.log(marker);
-  var contentString =
-
-  infowindow.setContent(contentString);
-  infowindow.setPosition(marker.position);
-  infowindow.open(map);
 }
 
 function genCSV(){
@@ -151,20 +134,6 @@ function newMapSearch(){
   )
 }
 
-function drawCircle(){
-  circleMap.setMap(null);
-  var circle = {
-      strokeColor: '#FF0000',
-      strokeOpacity: 0.4,
-      strokeWeight: 1,
-      fillColor: '#FF0000',
-      fillOpacity: 0.20,
-      map: map,
-      center: new google.maps.LatLng(document.getElementById('lat').value, document.getElementById('lng').value),
-      radius: parseInt(document.getElementById('radius').value)
-    };
-    circleMap = new google.maps.Circle(circle);
-}
 
 function isEnter(keyEvent, func){
   if(keyEvent && keyEvent.keyCode == 13){

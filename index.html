@@ -14,17 +14,16 @@
   <body>
     <img src="images/powered-by-google-on-white.png" style="float:right"></img>
     <h1> Pointz </h1>
-    <span>Search for </span>
+    <div class="inputText">Search for </div>
     <input id="type" type="text" value="Pizza" onKeyPress="isEnter(event, newMapSearch)"></input>
-    <span>in </span>
+    <div class="inputText">in </div>
     <input id="location" type="text" value="New York" onKeyPress="isEnter(event, newMapSearch)"></input>
     <button id="search" type="submit" onclick="newMapSearch()"> Search </button>
     <button type="button" onclick="genCSV()" style="float:right">Download CSV</button>
     <div id="map"></div>
-    <div class="footer">
-      A web app created by <br>
-      Ethan Jurman and Ricky Kendrick <br>
+    <footer>
+      A web app created by Ethan Jurman and Ricky Kendrick <br>
       <a href="https://github.com/ethanjurman/Pointz"> github link </a>
-    </div>
+    </footer>
   </body>
 </html>
