@@ -57,7 +57,7 @@ function callback(results, status) {
       var infoContent = "<strong>" + marker.title +
         "</strong><br /><hr />Latitude: " +
         marker.position.k + "<br />Longitude: " +
-        marker.position.B;
+        marker.position.D;
 
       if(typeof results[i].price_level !== 'undefined'){
         infoContent += "<br />Price Level: " + results[i].price_level;
@@ -83,7 +83,7 @@ function callback(results, status) {
 
       markers.push(marker);
       //add point to a list to find the bounds of the map later
-      LatLonList[i] = new google.maps.LatLng(results[i].geometry.location.k,results[i].geometry.location.B);
+      LatLonList[i] = new google.maps.LatLng(results[i].geometry.location.k,results[i].geometry.location.D);
     }
     locations = results;
 
@@ -107,7 +107,7 @@ function genCSV(){
       if(typeof price === 'undefined'){price = "N/A";}
       if(typeof rating === 'undefined'){rating = "N/A";}
       output += "\n\"" + locations[i].name +
-        "\"," + locations[i].geometry.location.B +  //B = longitude
+        "\"," + locations[i].geometry.location.D +  //D = longitude
         "," + locations[i].geometry.location.k +    //k = latitude
         "," + price +
         "," + rating;
