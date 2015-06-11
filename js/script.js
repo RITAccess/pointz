@@ -83,7 +83,7 @@ function callback(results, status) {
 
       markers.push(marker);
       //add point to a list to find the bounds of the map later
-      LatLonList[i] = new google.maps.LatLng(results[i].geometry.location.k,results[i].geometry.location.D);
+      LatLonList[i] = new google.maps.LatLng(results[i].geometry.location.A,results[i].geometry.location.F);
     }
     locations = results;
 
