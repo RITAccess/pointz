@@ -56,8 +56,8 @@ function callback(results, status) {
 
       var infoContent = "<strong>" + marker.title +
         "</strong><br /><hr />Latitude: " +
-        marker.position.k + "<br />Longitude: " +
-        marker.position.D;
+        marker.position.A + "<br />Longitude: " +
+        marker.position.F;
 
       if(typeof results[i].price_level !== 'undefined'){
         infoContent += "<br />Price Level: " + results[i].price_level;
@@ -107,8 +107,8 @@ function genCSV(){
       if(typeof price === 'undefined'){price = "N/A";}
       if(typeof rating === 'undefined'){rating = "N/A";}
       output += "\n\"" + locations[i].name +
-        "\"," + locations[i].geometry.location.D +  //D = longitude
-        "," + locations[i].geometry.location.k +    //k = latitude
+        "\"," + locations[i].geometry.location.A +  //A = longitude
+        "," + locations[i].geometry.location.F +    //F = latitude
         "," + price +
         "," + rating;
     }
