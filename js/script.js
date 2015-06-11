@@ -56,8 +56,8 @@ function callback(results, status) {
 
       var infoContent = "<strong>" + marker.title +
         "</strong><br /><hr />Latitude: " +
-        marker.position.A + "<br />Longitude: " +
-        marker.position.F;
+        marker.position.lat() + "<br />Longitude: " +
+        marker.position.lng();
 
       if(typeof results[i].price_level !== 'undefined'){
         infoContent += "<br />Price Level: " + results[i].price_level;
